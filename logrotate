@@ -1,0 +1,17 @@
+/var/log/ServerEcho/serverEcho.log {
+	weekly
+	missingok
+	rotate 10
+	size 10M
+	compress
+	delaycompress
+	notifempty
+	create 640 root adm
+	sharedscripts
+  prerotate
+    /etc/init.d/ServerEcho stop > /dev/null
+	endscript
+	postrotate
+		/etc/init.d/ServerEcho start > /dev/null
+	endscript
+}
